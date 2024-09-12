@@ -12,7 +12,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
 public class SimpleSix64Test {
     @Test
     public void simpleSix64Test() {
-        for(String string : List.of("hello WORLD 123", "helloworld", "helloeeeeworld")){
+        for(String string : List.of("hello WORLD 123", "helloworld", "helloeeeeworld", "tttt:jhhh;tttt:jhhh;tttt:jhhh;")){
             test(string);
         }
     }
@@ -21,7 +21,6 @@ public class SimpleSix64Test {
         System.out.println("Original: " + string);
         byte[] encoded = SimpleSix64.encode(string);
         System.out.println("Encoded: " + Arrays.toString(encoded));
-        System.out.println("Encoded ASCII: " + new String(encoded, US_ASCII));
         String decoded = SimpleSix64.decode(encoded);
         System.out.println("Decoded: " + decoded);
 
