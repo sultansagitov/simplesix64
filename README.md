@@ -58,40 +58,6 @@ public class EncodingExample {
 }
 ```
 
-### Decoding
-
-To decode an encoded byte array back to a string, use the `decode` method.
-
-```java
-import net.result.simplesix64.SimpleSix64;
-
-public class DecodingExample {
-    public static void main(String[] args) {
-        byte[] encoded = "encodedData".getBytes();
-        String decoded = SimpleSix64.decode(encoded);
-        System.out.println("Decoded: " + decoded);
-    }
-}
-```
-
-### Splitting Strings
-
-You can split long encoded strings into smaller chunks for easier handling using the `splitString` method.
-
-```java
-import net.result.simplesix64.SimpleSix64;
-
-public class ChunkingExample {
-    public static void main(String[] args) {
-        String longString = "aVeryLongEncodedString...";
-        String[] chunks = SimpleSix64.splitString(longString, 50);
-        for (String chunk : chunks) {
-            System.out.println("Chunk: " + chunk);
-        }
-    }
-}
-```
-
 ## License
 
 This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
