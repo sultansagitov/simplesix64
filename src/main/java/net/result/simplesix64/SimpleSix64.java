@@ -90,21 +90,23 @@ public class SimpleSix64 {
 
         // Process each set of 3 bytes (which represent 4 characters in 6-bit format)
         while (i < encoded.length) {
-            byte b1 = encoded[i];
-            byte b2 = encoded[i + 1];
-            byte b3 = encoded[i + 2];
+            try {
+                byte b1 = encoded[i];
+                byte s1 = (byte) (((b1 & 0b11111100) >> 2));
+                builder.append(CHARSET.charAt(s1));
 
-            // Decode the bytes back into 6-bit characters
-            byte s1 = (byte) (((b1 & 0b11111100) >> 2));
-            byte s2 = (byte) (((b1 & 0b00000011) << 4) + ((b2 & 0b11110000) >> 4));
-            byte s3 = (byte) (((b2 & 0b00001111) << 2) + ((b3 & 0b11000000) >> 6));
-            byte s4 = (byte) (                           ((b3 & 0b00111111)));
+                byte b2 = encoded[i + 1];
+                byte s2 = (byte) (((b1 & 0b00000011) << 4) + ((b2 & 0b11110000) >> 4));
+                builder.append(CHARSET.charAt(s2));
 
-            // Append the decoded characters to the string builder
-            builder.append(CHARSET.charAt(s1));
-            builder.append(CHARSET.charAt(s2));
-            builder.append(CHARSET.charAt(s3));
-            builder.append(CHARSET.charAt(s4));
+                byte b3 = encoded[i + 2];
+                byte s3 = (byte) (((b2 & 0b00001111) << 2) + ((b3 & 0b11000000) >> 6));
+                byte s4 = (byte) (                           ((b3 & 0b00111111)));
+                builder.append(CHARSET.charAt(s3));
+                builder.append(CHARSET.charAt(s4));
+            } catch (ArrayIndexOutOfBoundsException ignored) {
+            }
+
             i += 3;  // Move to the next 3 bytes
         }
 

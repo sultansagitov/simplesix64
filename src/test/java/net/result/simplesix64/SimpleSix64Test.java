@@ -12,7 +12,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
 public class SimpleSix64Test {
     @Test
     public void simpleSix64Test() {
-        for(String string : List.of("hello WORLD 123", "helloworld", "helloeeeeworld", "tttt:jhhh;tttt:jhhh;tttt:jhhh;")){
+        for(String string : List.of("hello WORLD 123", "helloworld", "helloeeeeworld", "sandnode-type:5;")){
             test(string);
         }
     }
