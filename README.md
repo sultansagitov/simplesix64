@@ -73,8 +73,8 @@ public class Main {
 SimpleSix64 supports case-insensitive encoding, which means that both upper and lower case letters are treated equally in the encoding process.
 
 ```java
-String encoded = SimpleSix64.encode("SampleText");
-String decoded = SimpleSix64.decode(encoded.toLowerCase()); // Works the same if decoded as upper or mixed case
+byte[] encoded = SimpleSix64.encode("SampleText");
+String decoded = SimpleSix64.decode(encoded); // sampletext
 ```
 
 ## Building
