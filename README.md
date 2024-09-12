@@ -1,33 +1,36 @@
 # SimpleSix64
 
-**SimpleSix64** is a custom encoding scheme that extends the traditional Base64 encoding to support a case-insensitive alphabet, along with additional symbols. It is designed for efficient encoding and decoding of data, and is perfect for cases where Base64 does not fully meet the need for symbol-rich or case-insensitive environments.
+**SimpleSix64** is an encoding library designed to extend Base64 encoding with a broader set of characters, including case-insensitive letters and a variety of symbols. This library is useful for applications needing a custom encoding scheme that supports a wider range of characters.
 
 ## Features
-- Case-insensitive encoding and decoding.
-- Support for additional symbols beyond Base64's limited character set.
-- Suitable for environments requiring more flexible encoding mechanisms.
+
+- **Extended Character Set**: Supports a rich set of symbols beyond the standard Base64.
+- **Case Insensitivity**: Encoding and decoding processes handle case insensitivity.
 
 ## Installation
 
-Since SimpleSix64 is not yet uploaded to Maven Central Repository, you can install it locally by cloning this repository and installing it with Maven.
+### Clone the Repository
 
-### Steps:
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/sultansagitov/simplesix64.git
-    ```
-2. Navigate to the directory:
-    ```bash
-    cd simplesix64
-    ```
-3. Install it to your local Maven repository:
-    ```bash
-    mvn clean install
-    ```
+To get started, clone the repository from GitHub:
 
-### Maven Dependency
+```bash
+git clone https://github.com/sultansagitov/simplesix64.git
+```
 
-After installing the project locally, you can add SimpleSix64 as a dependency in your own project by including the following in your `pom.xml`:
+### Build and Install Locally
+
+Navigate into the project directory and build the project using Maven:
+
+```bash
+cd simplesix64
+mvn clean install
+```
+
+This will install the library into your local Maven repository.
+
+### Adding to Your Project
+
+Add the following dependency to your `pom.xml` to use SimpleSix64 in your Maven project:
 
 ```xml
 <dependency>
@@ -39,63 +42,22 @@ After installing the project locally, you can add SimpleSix64 as a dependency in
 
 ## Usage
 
-### Encoding and Decoding
+### Encoding
 
-SimpleSix64 provides simple API methods to encode and decode strings.
+To encode a string, use the `encode` method. This method converts the input string into a custom encoded format using the defined character set.
 
-#### Encoding a String
 ```java
 import net.result.simplesix64.SimpleSix64;
 
-public class Main {
+public class EncodingExample {
     public static void main(String[] args) {
-        String input = "Your string to encode";
-        String encoded = SimpleSix64.encode(input);
-        System.out.println("Encoded: " + Arrays.toString(encoded));
+        String data = "Hello, World!";
+        byte[] encoded = SimpleSix64.encode(data);
+        System.out.println("Encoded: " + new String(encoded));
     }
 }
 ```
-
-#### Decoding a String
-```java
-import net.result.simplesix64.SimpleSix64;
-
-public class Main {
-    public static void main(String[] args) {
-        String encoded = "Your encoded string";
-        String decoded = SimpleSix64.decode(encoded);
-        System.out.println("Decoded: " + decoded);
-    }
-}
-```
-
-### Case-Insensitive Encoding Example
-SimpleSix64 supports case-insensitive encoding, which means that both upper and lower case letters are treated equally in the encoding process.
-
-```java
-String encoded = SimpleSix64.encode("SampleText");
-String decoded = SimpleSix64.decode(encoded.toLowerCase()); // Works the same if decoded as upper or mixed case
-```
-
-## Building
-
-To build the project, simply run:
-
-```bash
-mvn package
-```
-
-This will generate a JAR file in the `target` directory.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-If you wish to contribute to this project, feel free to open issues or submit pull requests!
-
-## Contact
-
-For any questions or concerns, feel free to reach out to me:
-- GitHub: [sultansagitov](https://github.com/sultansagitov)
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
