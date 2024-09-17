@@ -80,10 +80,6 @@ public class SimpleSix64 {
      * @return The decoded string
      */
     public static String decode(byte[] encoded) {
-        // Check for minimum valid length of the byte array
-        if (encoded.length < 2)
-            throw new IllegalArgumentException("byte array should be bigger than 2");
-
         // A string builder to hold the decoded characters
         StringBuilder builder = new StringBuilder();
         int i = 0;
